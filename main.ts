@@ -19,7 +19,7 @@ namespace poitch {
      * @param pType poitch type
      */
     //% block="initPoitch %pType"
-    function initPoitch(pt:poitchType): void {
+    export function initPoitch(pt:poitchType): void {
         pType = pt;
 
         if (pType==poitchType.poitch2){
