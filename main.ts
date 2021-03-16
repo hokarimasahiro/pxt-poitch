@@ -13,13 +13,13 @@ namespace poitch {
         };
     export enum poitchSW{
             //% block=p8
-            p8=DigitalPin.P8,
+            p8=8,
             //% block=p12
-            p12=DigitalPin.P12,
+            p12=12,
             //% block=p13
-            p13=DigitalPin.P13,
+            p13=13,
             //% block=p16
-            p16=DigitalPin.P16
+            p16=16
         };
     
     let initFlag = 0;
