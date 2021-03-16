@@ -2,15 +2,26 @@
 namespace poitch {
 
     export enum poitchType{
-        //% block=poitch2
-        poitch2=2,
-        //% block=poitch3
-        poitch3=3,
-        //% block=poitch4
-        poitch4=4,
-        //% block=poitch5
-        poitch5=5
-    }
+            //% block=poitch2
+            poitch2=2,
+            //% block=poitch3
+            poitch3=3,
+            //% block=poitch4
+            poitch4=4,
+            //% block=poitch5
+            poitch5=5
+        };
+    export enum poitchSW{
+            //% block=p8
+            p8=DigitalPin.P8,
+            //% block=p12
+            p12=DigitalPin.P12,
+            //% block=p13
+            p13=DigitalPin.P13,
+            //% block=p16
+            p16=DigitalPin.P16
+        };
+    
     let initFlag = 0;
     let pType=2;
 
@@ -43,19 +54,26 @@ namespace poitch {
      * @param sw test pin of switch
      */
     //% blockId=testSwitch block="test switch at|%sw"
-    export function testSwitch(sw : DigitalPin): boolean {
+    export function testSwitch(sw : poitchSW): boolean {
+        let wsw:number;
+    
 		if (initFlag == 0){
 			initPoitch(pType);
 		}
 
+        if (sw==poitchSW.p8) wsw = pins.digitalReadPin(DigitalPin.P8)
+        if (sw==poitchSW.p12) wsw = pins.digitalReadPin(DigitalPin.P12)
+        if (sw==poitchSW.p13) wsw = pins.digitalReadPin(DigitalPin.P13)
+        if (sw==poitchSW.p16) wsw = pins.digitalReadPin(DigitalPin.P16)
+
         if ((pType==poitchType.poitch2) || (pType==poitchType.poitch3)){
-            if (pins.digitalReadPin(sw)==1){
+            if (wsw==1){
                 return true;
             } else {
                 return false;
             }
         } else{
-            if (pins.digitalReadPin(sw)==0){
+            if (wsw==0){
                 return true;
             } else {
                 return false;
