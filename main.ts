@@ -1,4 +1,3 @@
-//% color=#0fbc11 icon="\u2611" block="poitch"
 namespace poitch {
 
     export enum poitchType{
