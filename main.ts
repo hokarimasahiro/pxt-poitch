@@ -5,11 +5,7 @@ namespace poitch {
             //% block=poitch2
             poitch2=2,
             //% block=poitch3
-            poitch3=3,
-            //% block=poitch4
-            poitch4=4,
-            //% block=poitch5
-            poitch5=5
+            poitch3=3
         };
     export enum poitchSW{
             //% block=p8
@@ -23,7 +19,7 @@ namespace poitch {
         };
     
     let initFlag = 0;
-    let pType=2;
+    let pType=3;
 
     /**
      * set poitch type
@@ -36,17 +32,10 @@ namespace poitch {
         if (pType==poitchType.poitch2){
             pins.digitalWritePin(DigitalPin.P2, 1);
         }
-        if ((pType==poitchType.poitch2) || (pType==poitchType.poitch3)){
-            pins.setPull(DigitalPin.P8, PinPullMode.PullDown);
-            pins.setPull(DigitalPin.P12, PinPullMode.PullDown);
-            pins.setPull(DigitalPin.P13, PinPullMode.PullDown);
-            pins.setPull(DigitalPin.P16, PinPullMode.PullDown);
-        } else{
-            pins.setPull(DigitalPin.P8, PinPullMode.PullUp);
-            pins.setPull(DigitalPin.P12, PinPullMode.PullUp);
-            pins.setPull(DigitalPin.P13, PinPullMode.PullUp);
-            pins.setPull(DigitalPin.P16, PinPullMode.PullUp);
-        }
+        pins.setPull(DigitalPin.P8, PinPullMode.PullDown);
+        pins.setPull(DigitalPin.P12, PinPullMode.PullDown);
+        pins.setPull(DigitalPin.P13, PinPullMode.PullDown);
+        pins.setPull(DigitalPin.P16, PinPullMode.PullDown);
         initFlag=1;
     }
     /**
@@ -66,18 +55,10 @@ namespace poitch {
         if (sw==poitchSW.p13) wsw = pins.digitalReadPin(DigitalPin.P13)
         if (sw==poitchSW.p16) wsw = pins.digitalReadPin(DigitalPin.P16)
 
-        if ((pType==poitchType.poitch2) || (pType==poitchType.poitch3)){
-            if (wsw==1){
-                return true;
-            } else {
-                return false;
-            }
-        } else{
-            if (wsw==0){
-                return true;
-            } else {
-                return false;
-            }
+        if (wsw==1){
+            return true;
+        } else {
+            return false;
         }
     }
 }

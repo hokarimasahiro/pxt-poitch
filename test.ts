@@ -1,7 +1,5 @@
 if (input.buttonIsPressed(Button.A)){
     poitch.initPoitch(poitch.poitchType.poitch2)
-}else{
-    poitch.initPoitch(poitch.poitchType.poitch4)
 }
 basic.forever(function () {
     if (poitch.testSwitch(poitch.poitchSW.p8)) {
